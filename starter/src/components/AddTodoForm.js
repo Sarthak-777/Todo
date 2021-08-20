@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
-import {addTodo} from '../redux/todoSlice'
+import {addTodo, fetchTodo} from '../redux/todoSlice'
 const AddTodoForm = () => {
 	const [value, setValue] = useState('');
 
@@ -12,6 +12,10 @@ const AddTodoForm = () => {
 			title: value
 		}))
 	};
+
+	const fetchApi = ()=>{
+		dispatch(fetchTodo())
+	}
 
 	return (
 		<form onSubmit={onSubmit} className='form-inline mt-3 mb-3'>
@@ -26,6 +30,9 @@ const AddTodoForm = () => {
 
 			<button type='submit' className='btn btn-primary mb-2'>
 				Submit
+			</button>
+			<button type='button' className='btn btn-secondary mb-2' onClick ={fetchApi}>
+				FetchApi
 			</button>
 		</form>
 	);
